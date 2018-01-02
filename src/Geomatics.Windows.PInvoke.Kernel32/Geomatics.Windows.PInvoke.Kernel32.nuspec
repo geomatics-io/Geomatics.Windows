@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Geomatics.Windows.PInvoke.Kernel32</id>
+    <version>$version$</version>
+    <title>Geomatics.Windows.PInvoke.Kernel32</title>
+    <authors>Christian Junk</authors>
+    <owners>geomatics I/O</owners>
+    <projectUrl>https://github.com/geomatics-io/Geomatics.Windows</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A collection of libraries intended to contain all P/Invoke method signatures for popular operating systems.</description>
+    <copyright>Copyright ©2017-2018 geomatics I/O.</copyright>
+    <tags>csharp csharp-library dotnet pinvoke kernel32</tags>
+    <iconUrl>https://raw.githubusercontent.com/geomatics-io/Geomatics.Windows/master/src/Geomatics.Windows/logo.png</iconUrl>
+    <dependencies />
+  </metadata>
+</package>
