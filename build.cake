@@ -1,4 +1,4 @@
-#tool nuget:?package=NUnit.ConsoleRunner&version=3.4.0
+#tool nuget:?package=NUnit.ConsoleRunner&version=3.7.0
 //////////////////////////////////////////////////////////////////////
 // ARGUMENTS
 //////////////////////////////////////////////////////////////////////
@@ -82,6 +82,11 @@ Task("BuildPackages")
 
     MSBuild("./src/Geomatics.Windows.PInvoke.User32/Geomatics.Windows.PInvoke.User32.csproj", new MSBuildSettings().SetConfiguration("Release"));
     NuGetPack("./src/Geomatics.Windows.PInvoke.User32/Geomatics.Windows.PInvoke.User32.csproj", nuGetPackSettings);
+
+    MSBuild("./src/Geomatics.Windows.Extensions/Geomatics.Windows.Extensions.csproj", new MSBuildSettings().SetConfiguration("Release"));
+    NuGetPack("./src/Geomatics.Windows.Extensions/Geomatics.Windows.Extensions.csproj", nuGetPackSettings);
+
+    MSBuild("./src/Geomatics.Windows.Extensions.Tests/Geomatics.Windows.Extensions.Tests.csproj", new MSBuildSettings().SetConfiguration("Release"));
 });
 
 //////////////////////////////////////////////////////////////////////
