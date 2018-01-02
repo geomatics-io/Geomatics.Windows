@@ -5,7 +5,7 @@
     <version>$version$</version>
     <title>Geomatics.Windows.PInvoke.Kernel32</title>
     <authors>Christian Junk</authors>
-    <owners>geomatics I/O</owners>
+    <owners>geomatics</owners>
     <projectUrl>https://github.com/geomatics-io/Geomatics.Windows</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>A collection of libraries intended to contain all P/Invoke method signatures for popular operating systems.</description>
