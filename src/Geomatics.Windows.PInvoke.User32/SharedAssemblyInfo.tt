@@ -10,29 +10,3 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyCompanyAttribute("geomatics I/O")]
 [assembly: AssemblyCopyrightAttribute("Copyright ©2017-2018 geomatics I/O.")]
 [assembly: AssemblyTrademarkAttribute("geomatics I/O")]
-
-// Version information for an assembly consists of the following four values:
-//
-//      Major Version
-//      Minor Version 
-//      Build Number
-//      Revision
-//
-// You can specify all the values or you can default the Build and Revision Numbers 
-// by using the '*' as shown below:
-[assembly: AssemblyVersion("<#= this.AssemblyVersion #>")]
-[assembly: AssemblyFileVersion("<#= this.SemverMajor #>.<#= this.SemverMinor #>.<#= this.SemverPatch #>.<#= this.BuildNumber #>")]
-[assembly: AssemblyInformationalVersion("<#= this.SemverMajor #>.<#= this.SemverMinor #>.<#= this.SemverPatch #>")]
-<#+	
-	string AssemblyVersion = "0.0.1";
-
-	// http://semver.org/lang/de/
-	string SemverMajor = "0";
-	string SemverMinor = "0";
-	string SemverPatch = "1";
-
-	// https://intovsts.net/2015/08/24/global-net-versioning-strategy-assemblyinformationalversion/
-	string Year = DateTime.Now.ToString("yy");
-	string DayOfYear = DateTime.Now.DayOfYear.ToString().PadLeft(3, '0');
-	string BuildNumber = DateTime.Now.ToString("yy") + DateTime.Now.DayOfYear.ToString().PadLeft(3, '0');	
-#>
