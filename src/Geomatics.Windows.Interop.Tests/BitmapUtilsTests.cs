@@ -12,60 +12,65 @@ using Bitmap = System.Drawing.Bitmap;
 namespace Geomatics.Windows.Interop.Tests
 {
     [TestFixture]
-    public class BitmapUtilsTests
+    public class BitmapUtilsTests : NUnit3AbstractTestFixure
+
     {
-        [SetUp]
-        public void SetUp()
-        {
-        }
+    [SetUp]
+    public void SetUp()
+    {
+    }
 
-        [TearDown]
-        public void TearDown()
-        {
-        }
-
-
-        [Test]
-        [Apartment(ApartmentState.STA)]
-        public void TestCombine()
-        {
-            Image image = System.Drawing.Image.FromFile(@"Z:\bitbucket\geomatics.io\Geomatics.Windows\src\Geomatics.Windows.Interop.Tests\Images\grinch.jpg"); //@TODO: embed image
-            Clipboard.SetImage(image);
+    [TearDown]
+    public void TearDown()
+    {
+    }
 
 
-            //            MemoryStream dib = Clipboard.GetData(DataFormats.Dib) as MemoryStream;
-            //            byte[] dibBytes = dib.ToArray();
-            //            GCHandle hdl = GCHandle.Alloc(dibBytes, GCHandleType.Pinned);
-            //            BITMAPINFOHEADER dibHdr = (BITMAPINFOHEADER) Marshal.PtrToStructure(hdl.AddrOfPinnedObject(), typeof(BITMAPINFOHEADER));
-            //            hdl.Free();
+    [Test]
+    [Apartment(ApartmentState.STA)]
+    public void TestCombine()
+    {
+        var file = base.LoadFile("Images.grinch.jpg");
+        Assert.NotNull(file);
+        Assert.That(File.Exists(file));
 
-            bool result = User32.OpenClipboard(IntPtr.Zero);
-            Assert.True(result);
+        Image image = System.Drawing.Image.FromFile(file);
+        Clipboard.SetImage(image);
 
-            result = User32.IsClipboardFormatAvailable((uint) User32.StandardClipboardFormat.CF_DIBV5);
-            Assert.True(result);
 
-            IntPtr pDib = User32.GetClipboardData((uint) User32.StandardClipboardFormat.CF_DIBV5);
-            Assert.AreNotEqual(IntPtr.Zero, pDib);
+        //            MemoryStream dib = Clipboard.GetData(DataFormats.Dib) as MemoryStream;
+        //            byte[] dibBytes = dib.ToArray();
+        //            GCHandle hdl = GCHandle.Alloc(dibBytes, GCHandleType.Pinned);
+        //            BITMAPINFOHEADER dibHdr = (BITMAPINFOHEADER) Marshal.PtrToStructure(hdl.AddrOfPinnedObject(), typeof(BITMAPINFOHEADER));
+        //            hdl.Free();
 
-            var filename = Path.Combine(Path.GetTempPath(), DateTime.Now.ToString("yyyyMMddHHmmssffffff") + ".bmp");
+        bool result = User32.OpenClipboard(IntPtr.Zero);
+        Assert.True(result);
 
-            result = BitmapUtils.SaveDibToFile(pDib, new FileInfo(filename));
-            Assert.True(result);
-            
-            Bitmap bitmap = new Bitmap(filename);
-            Assert.NotNull(bitmap);
+        result = User32.IsClipboardFormatAvailable((uint) User32.StandardClipboardFormat.CF_DIBV5);
+        Assert.True(result);
 
-            Bitmap bitmap2 = BitmapUtils.ConvertDibToBitmap(pDib);
-            Assert.NotNull(bitmap2);
+        IntPtr pDib = User32.GetClipboardData((uint) User32.StandardClipboardFormat.CF_DIBV5);
+        Assert.AreNotEqual(IntPtr.Zero, pDib);
 
-            var filename2 = Path.Combine(Path.GetTempPath(), DateTime.Now.ToString("yyyyMMddHHmmssffffff") + ".bmp");
-            result = BitmapUtils.SaveBitmapToFile(bitmap2, new FileInfo(filename2));
-            Assert.True(result);
+        var filename = Path.Combine(Path.GetTempPath(), DateTime.Now.ToString("yyyyMMddHHmmssffffff") + ".bmp");
 
-            Assert.True(BitmapUtils.Equals(bitmap, bitmap2));
+        result = BitmapUtils.SaveDibToFile(pDib, new FileInfo(filename));
+        Assert.True(result);
 
-            User32.CloseClipboard();
-        }
+        Bitmap bitmap = new Bitmap(filename);
+        Assert.NotNull(bitmap);
+
+        Bitmap bitmap2 = BitmapUtils.ConvertDibToBitmap(pDib);
+        Assert.NotNull(bitmap2);
+
+        var filename2 = Path.Combine(Path.GetTempPath(), DateTime.Now.ToString("yyyyMMddHHmmssffffff") + ".bmp");
+        result = BitmapUtils.SaveBitmapToFile(bitmap2, new FileInfo(filename2));
+        Assert.True(result);
+
+        Assert.True(BitmapUtils.Equals(bitmap, bitmap2));
+
+        User32.CloseClipboard();
+    }
     }
 }
