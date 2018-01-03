@@ -1,4 +1,6 @@
-﻿namespace PInvoke
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace PInvoke
 {
     /// <content>
     /// Contains the Windows Standard Clipboard Formats constants.
@@ -16,11 +18,13 @@
              * Text format. Each line ends with a carriage return/linefeed (CR-LF) combination. 
              * A null character signals the end of the data. Use this format for ANSI text.
              */
+            [Display(Name = "CF_TEXT")]
             CF_TEXT = 1,
 
             /// <summary>
             /// A handle to a bitmap (HBITMAP).
             /// </summary>
+            [Display(Name = "CF_BITMAP")]
             CF_BITMAP = 2,
 
             /* 
@@ -28,15 +32,19 @@
              * When passing a CF_METAFILEPICT handle by means of DDE, the application responsible for deleting 
              * hMem should also free the metafile referred to by the CF_METAFILEPICT handle.
              */
+            [Display(Name = "CF_METAFILEPICT")]
             CF_METAFILEPICT = 3,
 
             // Microsoft Symbolic Link (SYLK) format.
+            [Display(Name = "CF_SYLK")]
             CF_SYLK = 4,
 
             // Software Arts' Data Interchange Format.
+            [Display(Name = "CF_DIF")]
             CF_DIF = 5,
 
             // Tagged-image file format.
+            [Display(Name = "CF_TIFF")]
             CF_TIFF = 6,
 
             /*
@@ -44,11 +52,13 @@
              * Each line ends with a carriage return/linefeed (CR-LF) combination. 
              * A null character signals the end of the data.
              */
+            [Display(Name = "CF_OEMTEXT")]
             CF_OEMTEXT = 7,
 
             /// <summary>
             /// A memory object containing a BITMAPINFO structure followed by the bitmap bits.
             /// </summary>
+            [Display(Name = "CF_DIB")]
             CF_DIB = 8,
 
             /*
@@ -62,34 +72,41 @@
              * When displaying clipboard data, the clipboard always uses as its current palette 
              * any object on the clipboard that is in the CF_PALETTE format.
              */
+            [Display(Name = "CF_PALETTE")]
             CF_PALETTE = 9,
 
             // Data for the pen extensions to the Microsoft Windows for Pen Computing.
+            [Display(Name = "CF_PENDATA")]
             CF_PENDATA = 10,
 
             /*
              * Represents audio data more complex than can be represented in a CF_WAVE standard wave format.
              */
+            [Display(Name = "CF_RIFF")]
             CF_RIFF = 11,
 
             /*
              * Represents audio data in one of the standard wave formats, such as 11 kHz or 22 kHz PCM.
              */
+            [Display(Name = "CF_WAVE")]
             CF_WAVE = 12,
 
             /*
              * Unicode text format. Each line ends with a carriage return/linefeed (CR-LF) 
              * combination. A null character signals the end of the data.
              */
+            [Display(Name = "CF_UNICODETEXT")]
             CF_UNICODETEXT = 13,
 
             // A handle to an enhanced metafile (HENHMETAFILE).
+            [Display(Name = "CF_ENHMETAFILE")]
             CF_ENHMETAFILE = 14,
 
             /*
              * A handle to type HDROP that identifies a list of files. An application can retrieve information 
              * about the files by passing the handle to the DragQueryFile function.
              */
+            [Display(Name = "CF_HDROP")]
             CF_HDROP = 15,
 
             /*
@@ -107,13 +124,16 @@
              * The system uses the code page associated with CF_LOCALE to implicitly convert from 
              * CF_TEXT to CF_UNICODETEXT. Therefore, the correct code page table is used for the conversion.
              */
+            [Display(Name = "CF_LOCALE")]
             CF_LOCALE = 16,
 
             /// <summary>
             /// A memory object containing a BITMAPV5HEADER structure followed by the bitmap color space information and the bitmap bits.
             /// </summary>
+            [Display(Name = "CF_DIBV5")]
             CF_DIBV5 = 17,
 
+            [Display(Name = "CF_MAX")]
             CF_MAX = 18,
 
             /*
@@ -122,12 +142,14 @@
              * WM_PAINTCLIPBOARD, WM_SIZECLIPBOARD, and WM_VSCROLLCLIPBOARD messages. 
              * The hMem parameter must be NULL.
              */
+            [Display(Name = "CF_OWNERDISPLAY")]
             CF_OWNERDISPLAY = 0x80,
 
             /* 
              * Text display format associated with a private format. The hMem parameter must be a handle 
              * to data that can be displayed in text format in lieu of the privately formatted data.
              */
+            [Display(Name = "CF_DSPTEXT")]
             CF_DSPTEXT = 0x81,
 
             /*
@@ -135,6 +157,7 @@
              * handle to data that can be displayed in bitmap format in lieu of 
              * the privately formatted data.
              */
+            [Display(Name = "CF_DSPBITMAP")]
             CF_DSPBITMAP = 0x82,
 
             /*
@@ -142,6 +165,7 @@
              * be a handle to data that can be displayed in metafile-picture format in lieu 
              * of the privately formatted data.
              */
+            [Display(Name = "CF_DSPMETAFILEPICT")]
             CF_DSPMETAFILEPICT = 0x83, // 
 
             /*
@@ -149,6 +173,7 @@
              * The hMem parameter must be a handle to data that can be displayed in enhanced metafile 
              * format in lieu of the privately formatted data.
              */
+            [Display(Name = "CF_DSPENHMETAFILE")]
             CF_DSPENHMETAFILE = 0x8E,
 
             /*
@@ -157,9 +182,11 @@
              * the clipboard owner must free such handles, typically in response to 
              * the WM_DESTROYCLIPBOARD message.
              */
+            [Display(Name = "CF_PRIVATEFIRST")]
             CF_PRIVATEFIRST = 0x0200,
 
             // See CF_PRIVATEFIRST.
+            [Display(Name = "CF_PRIVATELAST")]
             CF_PRIVATELAST = 0x02FF,
 
             /*
@@ -171,9 +198,11 @@
              * the hMem parameter is not a handle to a GDI object, but is a handle allocated by the 
              * GlobalAlloc function with the GMEM_MOVEABLE flag.
              */
+            [Display(Name = "CF_GDIOBJFIRST")]
             CF_GDIOBJFIRST = 0x0300,
 
             // See CF_GDIOBJFIRST.
+            [Display(Name = "CF_GDIOBJLAST")]
             CF_GDIOBJLAST = 0x03FF,
         }
     }
