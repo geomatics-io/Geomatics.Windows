@@ -7,6 +7,7 @@
     <authors>Christian Junk</authors>
     <owners>geomatics</owners>
     <projectUrl>https://github.com/geomatics-io/Geomatics.Windows</projectUrl>
+    <licenseUrl>https://raw.githubusercontent.com/geomatics-io/Geomatics.Windows/master/LICENSE</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>A collection of libraries intended to contain all P/Invoke method signatures for popular operating systems.</description>
     <copyright>Copyright ©2017-2018 geomatics I/O.</copyright>
