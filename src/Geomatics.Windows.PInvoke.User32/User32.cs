@@ -55,7 +55,7 @@ namespace PInvoke
         /// <returns>true if it worked, false if not; call GetLastError to see what was the problem</returns>
         [DllImport("user32", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
-        private static extern bool AddClipboardFormatListener(IntPtr hWnd);
+        public static extern bool AddClipboardFormatListener(IntPtr hWnd);
         
         /// <summary>
         ///     Remove a window as a clipboard format listener
@@ -69,7 +69,7 @@ namespace PInvoke
         /// <returns>true if it worked, false if not; call GetLastError to see what was the problem</returns>
         [DllImport("user32", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
-        private static extern bool RemoveClipboardFormatListener(IntPtr hWnd);
+        public static extern bool RemoveClipboardFormatListener(IntPtr hWnd);
 
         /// <summary>
         /// Delegate for the EnumChildWindows method
@@ -129,6 +129,11 @@ namespace PInvoke
         [DllImport("user32.dll")]
         public static extern IntPtr GetClipboardOwner();
 
+        /// <summary>
+        /// Retrieves the sequence number of the clipboard
+        /// </summary>
+        /// <returns>sequence number or 0 if this cannot be retrieved</returns>
+        
         [DllImport("user32.dll", EntryPoint = "GetClipboardSequenceNumber", SetLastError = true)]
         public static extern uint GetClipboardSequenceNumber();
 
