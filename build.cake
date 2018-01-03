@@ -83,10 +83,17 @@ Task("BuildPackages")
     MSBuild("./src/Geomatics.Windows.PInvoke.User32/Geomatics.Windows.PInvoke.User32.csproj", new MSBuildSettings().SetConfiguration("Release"));
     NuGetPack("./src/Geomatics.Windows.PInvoke.User32/Geomatics.Windows.PInvoke.User32.csproj", nuGetPackSettings);
 
+    // MSBuild("./src/Geomatics.Windows.Clipboard/Geomatics.Windows.Clipboard.csproj", new MSBuildSettings().SetConfiguration("Release"));
+    // NuGetPack("./src/Geomatics.Windows.Clipboard/Geomatics.Windows.Clipboard.csproj", nuGetPackSettings);
+    // MSBuild("./src/Geomatics.Windows.Clipboard.Tests/Geomatics.Windows.Clipboard.Tests.csproj", new MSBuildSettings().SetConfiguration("Release"));
+
     MSBuild("./src/Geomatics.Windows.Extensions/Geomatics.Windows.Extensions.csproj", new MSBuildSettings().SetConfiguration("Release"));
     NuGetPack("./src/Geomatics.Windows.Extensions/Geomatics.Windows.Extensions.csproj", nuGetPackSettings);
-
     MSBuild("./src/Geomatics.Windows.Extensions.Tests/Geomatics.Windows.Extensions.Tests.csproj", new MSBuildSettings().SetConfiguration("Release"));
+
+    MSBuild("./src/Geomatics.Windows.Interop/Geomatics.Windows.Interop.csproj", new MSBuildSettings().SetConfiguration("Release"));
+    NuGetPack("./src/Geomatics.Windows.Interop/Geomatics.Windows.Interop.csproj", nuGetPackSettings);
+    MSBuild("./src/Geomatics.Windows.Interop.Tests/Geomatics.Windows.Interop.Tests.csproj", new MSBuildSettings().SetConfiguration("Release"));
 });
 
 //////////////////////////////////////////////////////////////////////
