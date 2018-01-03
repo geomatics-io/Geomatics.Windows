@@ -1,4 +1,5 @@
 ﻿using System.Runtime.InteropServices;
+using PInvoke.Interfaces;
 
 namespace PInvoke
 {
@@ -10,7 +11,7 @@ namespace PInvoke
     /// Windows 98/Me, Windows 2000/XP: Applications can use the BITMAPV5HEADER structure for added functionality
     /// </remarks>
     [StructLayout(LayoutKind.Sequential)]
-    public struct BITMAPV4HEADER
+    public struct BITMAPV4HEADER : IBitmapHeader
     {
         /// <summary>
         /// Specifies the number of bytes required by the structure. Applications should use

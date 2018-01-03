@@ -46,6 +46,7 @@
     <Compile Include="Enums\Bitcount.cs" />
     <Compile Include="Enums\BitmapCompression.cs" />
     <Compile Include="Gdi32+BITMAPCOREHEADER.cs" />
+    <Compile Include="Gdi32+BITMAPFILEHEADER.cs" />
     <Compile Include="Gdi32+BITMAPV4HEADER.cs" />
     <Compile Include="Gdi32+CIEXYZ.cs" />
     <Compile Include="Enums\RenderingIntent.cs" />
@@ -58,6 +59,7 @@
     <Compile Include="Gdi32+RGBTRIPLE.cs" />
     <Compile Include="Gdi32.cs" />
     <Compile Include="Enums\LogicalColorSpace.cs" />
+    <Compile Include="Interfaces\IBitmapHeader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SharedAssemblyInfo.cs">
       <DependentUpon>SharedAssemblyInfo.tt</DependentUpon>

@@ -26,22 +26,8 @@ namespace PInvoke
         [DllImport("kernel32.dll")]
         public static extern UIntPtr GlobalSize(IntPtr hMem);
 
-        public static byte[] StructureToByteArray<T>(T structure)
-        {
-            var size = Marshal.SizeOf(structure);
-            var buffer = new byte[size];
-
-            var pointer = Marshal.AllocHGlobal(size);
-            Marshal.StructureToPtr(structure, pointer, true);
-            try
-            {
-                Marshal.Copy(pointer, buffer, 0, size);
-                return buffer;
-            }
-            finally
-            {
-                Marshal.FreeHGlobal(pointer);
-            }
-        }
+        [DllImport("kernel32.dll")]
+        public static extern bool WriteFile(IntPtr hFile, IntPtr lpBuffer, int NumberOfBytesToWrite, out int lpNumberOfBytesWritten, IntPtr lpOverlapped);
+        
     }
 }

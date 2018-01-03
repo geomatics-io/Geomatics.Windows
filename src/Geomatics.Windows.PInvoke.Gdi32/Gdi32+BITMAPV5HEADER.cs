@@ -1,4 +1,5 @@
 ﻿using System.Runtime.InteropServices;
+using PInvoke.Interfaces;
 
 namespace PInvoke
 {
@@ -10,7 +11,7 @@ namespace PInvoke
     /// Windows NT 3.51 and earlier: Applications should continue to use BITMAPINFOHEADER.
     /// </remarks>
     [StructLayout(LayoutKind.Sequential)]
-    public struct BITMAPV5HEADER
+    public struct BITMAPV5HEADER : IBitmapHeader
     {
         /// <summary>
         /// Specifies the number of bytes required by the structure. Applications should use this member

@@ -1,5 +1,6 @@
 ﻿using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
+using PInvoke.Interfaces;
 
 namespace PInvoke
 {
@@ -10,7 +11,7 @@ namespace PInvoke
     /// bfSize is the same, but you have to add the size of the 2 header files.
 
     [StructLayout(LayoutKind.Sequential)]
-    public struct BITMAPINFOHEADER
+    public struct BITMAPINFOHEADER : IBitmapHeader
     {
         // https://msdn.microsoft.com/en-us/library/windows/desktop/dd183376(v=vs.85).aspx
 

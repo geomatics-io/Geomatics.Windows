@@ -1,4 +1,5 @@
 ﻿using System.Runtime.InteropServices;
+using PInvoke.Interfaces;
 
 namespace PInvoke
 {
@@ -9,7 +10,7 @@ namespace PInvoke
     /// For more information about specifying a DIB, see BITMAPCOREINFO.</remarks>
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    public struct BITMAPCOREHEADER
+    public struct BITMAPCOREHEADER : IBitmapHeader
     {
         /// <summary>
         /// The number of bytes required by the structure.
