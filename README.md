@@ -5,3 +5,4 @@
 - NuGet package `Geomatics.Windows.PInvoke.Kernel32`: [![NuGet version](https://badge.fury.io/nu/Geomatics.Windows.PInvoke.Kernel32.svg)](https://badge.fury.io/nu/Geomatics.Windows.PInvoke.Kernel32)
 - NuGet package `Geomatics.Windows.PInvoke.Shell32`: [![NuGet version](https://badge.fury.io/nu/Geomatics.Windows.PInvoke.Shell32.svg)](https://badge.fury.io/nu/Geomatics.Windows.PInvoke.Shell32)
 - NuGet package `Geomatics.Windows.PInvoke.User32`: [![NuGet version](https://badge.fury.io/nu/Geomatics.Windows.PInvoke.User32.svg)](https://badge.fury.io/nu/Geomatics.Windows.PInvoke.User32)
+- NuGet package `Geomatics.Windows.Extensions`: [![NuGet version](https://badge.fury.io/nu/Geomatics.Windows.Extensions.svg)](https://badge.fury.io/nu/Geomatics.Windows.Extensions)
