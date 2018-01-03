@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 
-namespace Geomatics.Windows.Interop.Tests
+namespace Geomatics.Windows.Extensions.Tests
 {
     public class NUnit3Initialize
     {

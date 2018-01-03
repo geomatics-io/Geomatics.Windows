@@ -45,7 +45,8 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="NUnitSetUpFixture.cs" />
+    <Compile Include="NUnit3AbstractTestFixure.cs" />
+    <Compile Include="NUnit3Initialize.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="System.ByteArray.Test.cs" />
   </ItemGroup>

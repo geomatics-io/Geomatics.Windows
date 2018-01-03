@@ -28,7 +28,7 @@ namespace Geomatics.Windows.Interop.Tests
 
     [Test]
     [Apartment(ApartmentState.STA)]
-    public void TestCombine()
+    public void TestBitmapUtils()
     {
         var file = base.LoadFile("Images.grinch.jpg");
         Assert.NotNull(file);
