@@ -6,7 +6,7 @@ using NUnit.Framework;
 namespace Geomatics.Windows.Extensions.Tests
 {
     [TestFixture]
-    public class UnitTest1
+    public class ByteArrayTests
     {
         [SetUp]
         public void SetUp()
