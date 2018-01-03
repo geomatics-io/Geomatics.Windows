@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Geomatics.Windows</id>
+    <version>$version$</version>
+    <title>Geomatics.Windows</title>
+    <authors>Christian Junk</authors>
+    <owners>geomatics</owners>
+    <projectUrl>https://github.com/geomatics-io/Geomatics.Windows</projectUrl>
+    <licenseUrl>https://raw.githubusercontent.com/geomatics-io/Geomatics.Windows/master/LICENSE</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A collection of Windows Forms and WPF utilities.</description>
+    <copyright>Copyright ©2017-2018 geomatics I/O.</copyright>
+    <tags>csharp csharp-library dotnet pinvoke gdi32</tags>
+    <iconUrl>https://raw.githubusercontent.com/geomatics-io/Geomatics.Windows/master/src/Geomatics.Windows/logo.png</iconUrl>
+    <dependencies />
+  </metadata>
+</package>
