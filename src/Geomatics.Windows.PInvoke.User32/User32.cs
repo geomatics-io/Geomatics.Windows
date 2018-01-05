@@ -79,6 +79,10 @@ namespace PInvoke
         /// <returns>True to continue enumerating, false to bail.</returns>
         public delegate bool EnumWindowProc(IntPtr hWnd, IntPtr parameter);
 
+        [DllImport("user32", SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        public static extern bool EnumChildWindows(IntPtr hWndParent, EnumWindowProc lpEnumFunc, IntPtr lParam);
+
         /// <summary>
         /// Determines whether the clipboard contains data in the specified format.
         /// </summary>
@@ -167,6 +171,13 @@ namespace PInvoke
         [DllImport("user32", SetLastError = true)]
         public static extern IntPtr GetClipboardOwner();
 
+        [DllImport("user32.dll", SetLastError = true)]
+        public static extern uint GetWindowThreadProcessId(IntPtr hWnd, out uint lpdwProcessId);
+        
+        // When you don't want the ProcessId, use this overload and pass IntPtr.Zero for the second parameter
+        [DllImport("user32.dll", SetLastError = true)]
+        public static extern IntPtr GetWindowThreadProcessId(IntPtr hWnd, IntPtr ProcessId);
+
         /// <summary>
         /// Retrieves the sequence number of the clipboard
         /// </summary>
@@ -207,7 +218,9 @@ namespace PInvoke
         /// <param name="format">uint with the id of the format</param>
         /// <param name="lpszFormatName">Name of the format</param>
         /// <param name="cchMaxCount">Maximum size of the output</param>
-        /// <returns></returns>
+        /// <returns>If the function succeeds, the return value is the length, in characters, of the string copied to the buffer.
+        /// If the function fails, the return value is zero, indicating that the requested format does not exist or is predefined.
+        /// To get extended error information, call GetLastError.</returns>
         [DllImport("user32", SetLastError = true, CharSet = CharSet.Unicode)]
         public static extern int GetClipboardFormatName(uint format, [Out] StringBuilder lpszFormatName, int cchMaxCount);
         
