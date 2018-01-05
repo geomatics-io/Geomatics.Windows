@@ -56,6 +56,7 @@
     <Compile Include="System.Object\Object.ToByteArray.cs" />
     <Compile Include="System.Object\Struct.FromByteArray.cs" />
     <Compile Include="System.Object\Struct.FromIntPtr.cs" />
+    <Compile Include="System.String\String.FormatWith.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="SharedAssemblyInfo.tt">
