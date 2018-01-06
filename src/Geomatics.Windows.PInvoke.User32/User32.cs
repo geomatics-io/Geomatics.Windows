@@ -42,6 +42,9 @@ namespace PInvoke
         [DllImport("user32.dll")]
         public static extern IntPtr LoadIcon(IntPtr hInstance, IntPtr lpIconName);
 
+        [DllImport("user32.dll", SetLastError=true)]
+        public static extern bool DestroyIcon(IntPtr hIcon);
+
         #region Clipboard
         /// <summary>
         ///     Add a window as a clipboard format listener
