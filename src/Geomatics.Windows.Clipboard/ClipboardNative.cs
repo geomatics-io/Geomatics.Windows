@@ -8,6 +8,7 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
+using Geomatics.Windows.Clipboard.Data;
 using Geomatics.Windows.Collections.Generic;
 using PInvoke;
 
@@ -256,5 +257,6 @@ namespace Geomatics.Windows.Clipboard
             return true;
         }
         #endregion
+        
     }
 }

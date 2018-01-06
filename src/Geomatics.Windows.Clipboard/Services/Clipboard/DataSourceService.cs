@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Drawing;
+using System.IO;
+using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Interop;
 using System.Windows.Media.Imaging;
@@ -40,15 +44,15 @@ namespace Geomatics.Windows.Clipboard.Services.Clipboard
             throw new InvalidOperationException("Could not load window icon.");
         }
 
-        public static IDataSource GetDataSource()
+        public static DataSource GetDataSource()
         {
-            string username = null, machinename = null, os = null;
-
+            DataSource ds = new DataSource();
+            
             try
             {
-                os = Environment.OSVersion.ToString();
-                machinename = Environment.MachineName;
-                username = Environment.UserName;
+                ds.OperatingSystem = Environment.OSVersion.ToString();
+                ds.MachineName = Environment.MachineName;
+                ds.UserName = Environment.UserName;
             }
             catch
             {
@@ -56,13 +60,56 @@ namespace Geomatics.Windows.Clipboard.Services.Clipboard
             }
 
             var activeWindowHandle = User32.GetForegroundWindow();
-        
-            var windowTitle = User32.GetWindowTitle(activeWindowHandle);
-            var windowIcon = GetWindowIcon(activeWindowHandle);
-        
-            var iconBytes = ImagePersistenceService.ConvertBitmapSourceToByteArray(windowIcon);
+            var process = ClipboardNative.GetProcessName(activeWindowHandle);
 
-            return new DataSource(iconBytes, windowTitle, username, machinename, os);
+            FileVersionInfo fvi = FileVersionInfo.GetVersionInfo(process);
+            ds.ApplicationName = fvi.ProductName;
+            ds.ApplicationDescription = fvi.FileDescription;
+
+            ds.SmallApplicationIcon = IconToBytes(GetSmallWindowIcon(process));
+            ds.LargeApplicationIcon = IconToBytes(GetLargeWindowIcon(process));
+
+            ds.ApplicationPath = process;
+
+            ds.WindowTitle = User32.GetWindowTitle(activeWindowHandle);
+            
+            return ds;
+        }
+
+        private static Icon GetSmallWindowIcon(string fileName)
+        {
+            Shell32.SHFILEINFO shfi = new Shell32.SHFILEINFO();
+            Shell32.SHGetFileInfo(fileName, 0, ref shfi, (uint)Marshal.SizeOf(shfi), Shell32.SHGFI_ICON | Shell32.SHGFI_SMALLICON);
+
+            Icon icon = System.Drawing.Icon.FromHandle(shfi.hIcon);
+            User32.DestroyIcon( shfi.hIcon );
+            return icon;
+        }
+        private static Icon GetLargeWindowIcon(string fileName)
+        {
+            Shell32.SHFILEINFO shfi = new Shell32.SHFILEINFO();
+            Shell32.SHGetFileInfo(fileName, 0, ref shfi, (uint)Marshal.SizeOf(shfi), Shell32.SHGFI_ICON | Shell32.SHGFI_LARGEICON);
+
+            Icon icon = System.Drawing.Icon.FromHandle(shfi.hIcon);
+            User32.DestroyIcon( shfi.hIcon );
+            return icon;
+        }
+
+        public static byte[] IconToBytes(Icon icon)
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                icon.Save(ms);
+                return ms.ToArray();
+            }
+        }
+
+        public static Icon BytesToIcon(byte[] bytes)
+        {
+            using (MemoryStream ms = new MemoryStream(bytes))
+            {
+                return new Icon(ms);
+            }
         }
     }
 }

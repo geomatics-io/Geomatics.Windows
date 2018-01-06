@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Geomatics.Windows.Clipboard.Data.Interfaces;
+using Geomatics.Windows.Clipboard.Services.Clipboard;
 using Geomatics.Windows.Collections.Generic;
 using Geomatics.Windows.Extensions.System.ByteArray;
 using PInvoke;
@@ -35,7 +36,7 @@ namespace Geomatics.Windows.Clipboard.Data
         /// </summary>
         public IntPtr OwnerHandle { get; } = User32.GetClipboardOwner();
 
-//        public IDataSource DataSource { get; set; }
+        public DataSource DataSource { get; set; } = DataSourceService.GetDataSource();
 
         /// <summary>
         /// Timestamp of the clipboard update event, this value will not be correct for the first event

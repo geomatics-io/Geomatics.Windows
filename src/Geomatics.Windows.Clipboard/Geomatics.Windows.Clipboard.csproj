@@ -130,6 +130,10 @@
       <Project>{CD32C1FD-3982-4B59-93E0-1565734DAE1E}</Project>
       <Name>Geomatics.Windows.PInvoke.Kernel32</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Geomatics.Windows.PInvoke.Shell32\Geomatics.Windows.PInvoke.Shell32.csproj">
+      <Project>{ACBB14CB-9EB9-40EC-9BC3-419E7BC1B44C}</Project>
+      <Name>Geomatics.Windows.PInvoke.Shell32</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Geomatics.Windows.PInvoke.User32\Geomatics.Windows.PInvoke.User32.csproj">
       <Project>{5AC4BA5F-411E-4C6A-99A5-CED17B35ADA3}</Project>
       <Name>Geomatics.Windows.PInvoke.User32</Name>
