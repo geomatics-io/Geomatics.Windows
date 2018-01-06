@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Geomatics.Windows.Clipboard.Data.Interfaces;
+using Geomatics.Windows.Collections.Generic;
 using Geomatics.Windows.Extensions.System.ByteArray;
 using PInvoke;
 
@@ -27,9 +28,14 @@ namespace Geomatics.Windows.Clipboard.Data
         /// <summary>
         /// The formats in this clipboard contents
         /// </summary>
-        public IEnumerable<string> Formats { get; } = ClipboardNative.AvailableFormats().ToList();
+        public OrderedDictionary<uint, string> Formats { get; } = ClipboardNative.AvailableFormats();
 
-        public IDataSource DataSource { get; set; }
+        /// <summary>
+        /// The handle of the window which owns the clipboard content
+        /// </summary>
+        public IntPtr OwnerHandle { get; } = User32.GetClipboardOwner();
+
+//        public IDataSource DataSource { get; set; }
 
         /// <summary>
         /// Timestamp of the clipboard update event, this value will not be correct for the first event

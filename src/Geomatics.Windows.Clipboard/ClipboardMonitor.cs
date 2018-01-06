@@ -46,18 +46,18 @@ namespace Geomatics.Windows.Clipboard
                         return IntPtr.Zero;
                     }
                     
-                    var clipboardUpdateInformationInfo = ClipboardDataPackage.Create(hwnd);
+                    var clipboardDataPackage = ClipboardDataPackage.Create(hwnd);
 
                     // Check if private clipboard contents should be handled or not
                     // http://www.clipboardextender.com/developing-clipboard-aware-programs-for-windows/ignoring-clipboard-updates-with-the-cf_clipboard_viewer_ignore-clipboard-format
-                    if (!BypassClipboardIgnoreFlag && (clipboardUpdateInformationInfo.Formats.Contains("CF_CLIPBOARD_VIEWER_IGNORE") || clipboardUpdateInformationInfo.Formats.Contains("Clipboard Viewer Ignore")))
+                    if (!BypassClipboardIgnoreFlag && (clipboardDataPackage.Formats.Values.Contains("CF_CLIPBOARD_VIEWER_IGNORE") || clipboardDataPackage.Formats.Values.Contains("Clipboard Viewer Ignore")))
                         return IntPtr.Zero;
 
                     // Make sure we don't trigger multiple times, this happend while developing.
-                    if (clipboardUpdateInformationInfo.Id > _previousSequence)
+                    if (clipboardDataPackage.Id > _previousSequence)
                     {
-                        _previousSequence = clipboardUpdateInformationInfo.Id;
-                        observer.OnNext(clipboardUpdateInformationInfo);
+                        _previousSequence = clipboardDataPackage.Id;
+                        observer.OnNext(clipboardDataPackage);
                     }
 
                     return IntPtr.Zero;
