@@ -76,6 +76,18 @@
       <Project>{edb1c1d2-5446-415a-ba00-64c8c1ad4161}</Project>
       <Name>Geomatics.Windows.Clipboard</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Geomatics.Windows.PInvoke.Kernel32\Geomatics.Windows.PInvoke.Kernel32.csproj">
+      <Project>{CD32C1FD-3982-4B59-93E0-1565734DAE1E}</Project>
+      <Name>Geomatics.Windows.PInvoke.Kernel32</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Geomatics.Windows.PInvoke.User32\Geomatics.Windows.PInvoke.User32.csproj">
+      <Project>{5AC4BA5F-411E-4C6A-99A5-CED17B35ADA3}</Project>
+      <Name>Geomatics.Windows.PInvoke.User32</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Geomatics.Windows\Geomatics.Windows.csproj">
+      <Project>{8AA2595B-AEC1-41E3-8952-5891DB55135A}</Project>
+      <Name>Geomatics.Windows</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="TestForm.resx">

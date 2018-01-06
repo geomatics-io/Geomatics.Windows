@@ -4,13 +4,16 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Reactive.Concurrency;
 using System.Reactive.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PInvoke;
 
 namespace Geomatics.Windows.Clipboard.Tests
 {
@@ -42,18 +45,29 @@ namespace Geomatics.Windows.Clipboard.Tests
                 //                .Where(contents => contents.OwnerHandle != WinProcHandler.Instance.Handle)
                 .Synchronize().Subscribe(clipboardContents =>
                 {
-                    textBox.Clear();
-                    foreach (var format in clipboardContents.Formats)
+                    tbDebug.Clear();
+
+                    tbProcess.Text = ClipboardNative.GetProcessName(clipboardContents.OwnerHandle);
+                    
+                    foreach (var key in clipboardContents.Formats.Keys)
                     {
-                        textBox.AppendText(format + "\n");
+                        tbDebug.AppendText(string.Format($@"{key:X4} - {clipboardContents.Formats[key]}") + "\n");
                     }
                 });
         }
+
         
+        
+
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             _clipboardMonitor?.Dispose();
             Application.Exit();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
